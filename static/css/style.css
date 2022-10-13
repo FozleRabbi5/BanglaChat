@@ -1,0 +1,16 @@
+body{
+    background-color: rgb(220, 225, 230);
+}
+
+.form{
+    border: 3px solid rgb(71, 70, 70);
+    border-radius: 5px;
+    background-color: white;
+    padding: 3%;
+    width: 35%;
+    display: flex;
+}
+
+.button{
+    width: 100%;
+}

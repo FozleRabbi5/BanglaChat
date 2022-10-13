@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block title %} {{title}}{% endblock %}
+
+
+{% block content %}
+
+<div class="form ">
+    <form action="" method="POST">
+        <div class="mb-3">
+            <h3 style="text-align: center;">Bangla Chat</h3>
+            <p>Sign up to see photos and videos from your friends.</p>
+            {{form | crispy  }}
+            {% csrf_token %}
+        </div>
+        
+        <button type="submit" class="btn btn-primary button mb-2" >Sign up</button>
+        <h4>Have an account? <a href="{% url 'login_app:login'%}" style="text-decoration: none;">Log in</a></h4>
+      </form>
+      
+      
+</div>
+
+
+{% endblock %}

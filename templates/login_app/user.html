@@ -1,0 +1,59 @@
+{% extends 'navbar.html' %}
+{% load crispy_forms_tags %}
+{% block title %} {{user.user_profile.full_name}} {% endblock %}
+{% block content %}
+<div class="row d-flex">
+    <div class="col-4  ">
+        {%if user.user_profile.Profile_pic %}
+        <img class="bg-secondary rounded-circle" src="/media/{{user.user_profile.Profile_pic}}" alt="" width="220px" height="220px">
+        {% else %}
+        <img src="/media/demo.png" alt="" width="220px" height="220px">
+        {% endif %}
+        <br>
+        <br>
+        <br>
+        <hr>
+        
+    </div>
+    <div class="col-4 text-center">
+        <h3>{{user.username}} &nbsp; <a href="{% url 'login_app:edit_profile' %}" class="btn btn-light">Edit profile</a></h3>
+        <h5>{{user.post_pic.count}} posts &nbsp;&nbsp; {{user.following.count}} followers &nbsp;&nbsp; {{user.follower.count}} following </h5>
+        <br>
+        <br>
+        <h6>{{user.user_profile.full_name}}</h6>
+        <p>{{user.user_profile.description}}</p>
+        
+        
+    </div>
+    <div class="col-4">
+        
+    </div>
+</div>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    post
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form | crispy }}
+            <button type="submit" class="btn btn-primary mb-2">Save</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
